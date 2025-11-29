@@ -1,0 +1,15 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:import/recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": true
+    }
+  },
+  "rules": {
+    "import/order": ["error", {"alphabetize": {"order": "asc", "caseInsensitive": true}}]
+  }
+}
