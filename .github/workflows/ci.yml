@@ -14,12 +14,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm run test -- --coverage
-      - run: npm run build
+          cache: 'pnpm'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.24.0
+          run_install: true
+      # Run lint/typecheck/tests/build for the web app
+      - run: pnpm --filter @stafferfi/web lint
+      - run: pnpm --filter @stafferfi/web typecheck
+      - run: pnpm --filter @stafferfi/web test -- --coverage
+      - run: pnpm --filter @stafferfi/web build
+      # Run build for the API app
+      - run: pnpm --filter @stafferfi/api build
+
   cypress:
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +34,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build
-      - run: npx start-server-and-test 'npm start' http://localhost:3000 'npm run cypress'
+          cache: 'pnpm'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.24.0
+          run_install: true
+      - run: pnpm --filter @stafferfi/web build
+      - run: npx start-server-and-test 'pnpm --filter @stafferfi/web start' http://localhost:3000 'pnpm --filter @stafferfi/web cypress'
