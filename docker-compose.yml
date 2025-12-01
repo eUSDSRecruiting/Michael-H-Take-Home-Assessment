@@ -29,7 +29,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    command: python apps/lake/etl_to_postgres.py
+    command: /bin/sh -c "/opt/venv/bin/python apps/lake/ingestion.py && /opt/venv/bin/python apps/lake/etl_to_postgres.py"
     networks:
       - stafferfi
     restart: "no"
