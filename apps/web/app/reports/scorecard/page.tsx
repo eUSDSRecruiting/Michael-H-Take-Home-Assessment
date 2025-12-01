@@ -171,38 +171,45 @@ export default function ScorecardPage() {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  <button
-                    onClick={() => setSortState(s => ({ key: 'composite', dir: s.key === 'composite' && s.dir === 'desc' ? 'asc' : 'desc' }))}
-                    className="inline-flex items-center gap-2"
-                  >
-                    Rank
-                    {sortState.key === 'composite' && (
-                      sortState.dir === 'desc' ? (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                          <path d="M5 8l5 5 5-5H5z" />
-                        </svg>
-                      ) : (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                          <path d="M5 12l5-5 5 5H5z" />
-                        </svg>
-                      )
-                    )}
-                  </button>
-                </th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          {/** Rank uses composite sort value visually */}
+                          <button
+                            onClick={() => setSortState(s => ({ key: 'composite', dir: s.key === 'composite' && s.dir === 'desc' ? 'asc' : 'desc' }))}
+                            className={`inline-flex items-center gap-2 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                              sortState.key === 'composite' ? 'bg-blue-50 text-blue-800 font-semibold' : 'text-gray-600 hover:bg-gray-50'
+                            }`}
+                            aria-sort={sortState.key === 'composite' ? (sortState.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
+                          >
+                            Rank
+                            {sortState.key === 'composite' && (
+                              sortState.dir === 'desc' ? (
+                                <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                                  <path d="M5 8l5 5 5-5H5z" />
+                                </svg>
+                              ) : (
+                                <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                                  <path d="M5 12l5-5 5 5H5z" />
+                                </svg>
+                              )
+                            )}
+                          </button>
+                        </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   <button
                     onClick={() => setSortState(s => ({ key: 'agency', dir: s.key === 'agency' && s.dir === 'desc' ? 'asc' : 'desc' }))}
-                    className="inline-flex items-center gap-2"
+                    className={`inline-flex items-center gap-2 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      sortState.key === 'agency' ? 'bg-blue-50 text-blue-800 font-semibold' : 'text-gray-600 hover:bg-gray-50'
+                    }`}
+                    aria-sort={sortState.key === 'agency' ? (sortState.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
                   >
                     Agency
                     {sortState.key === 'agency' && (
                       sortState.dir === 'desc' ? (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 8l5 5 5-5H5z" />
                         </svg>
                       ) : (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 12l5-5 5 5H5z" />
                         </svg>
                       )
@@ -215,16 +222,19 @@ export default function ScorecardPage() {
                 <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                   <button
                     onClick={() => setSortState(s => ({ key: 'composite', dir: s.key === 'composite' && s.dir === 'desc' ? 'asc' : 'desc' }))}
-                    className="inline-flex items-center gap-2"
+                    className={`inline-flex items-center gap-2 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      sortState.key === 'composite' ? 'bg-blue-50 text-blue-800 font-semibold' : 'text-gray-600 hover:bg-gray-50'
+                    }`}
+                    aria-sort={sortState.key === 'composite' ? (sortState.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
                   >
                     Score
                     {sortState.key === 'composite' && (
                       sortState.dir === 'desc' ? (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 8l5 5 5-5H5z" />
                         </svg>
                       ) : (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 12l5-5 5 5H5z" />
                         </svg>
                       )
@@ -234,16 +244,19 @@ export default function ScorecardPage() {
                 <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   <button
                     onClick={() => setSortState(s => ({ key: 'corrections', dir: s.key === 'corrections' && s.dir === 'desc' ? 'asc' : 'desc' }))}
-                    className="inline-flex items-center gap-2"
+                    className={`inline-flex items-center gap-2 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      sortState.key === 'corrections' ? 'bg-blue-50 text-blue-800 font-semibold' : 'text-gray-600 hover:bg-gray-50'
+                    }`}
+                    aria-sort={sortState.key === 'corrections' ? (sortState.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
                   >
                     Activity
                     {sortState.key === 'corrections' && (
                       sortState.dir === 'desc' ? (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 8l5 5 5-5H5z" />
                         </svg>
                       ) : (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 12l5-5 5 5H5z" />
                         </svg>
                       )
@@ -253,16 +266,19 @@ export default function ScorecardPage() {
                 <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   <button
                     onClick={() => setSortState(s => ({ key: 'rvi', dir: s.key === 'rvi' && s.dir === 'desc' ? 'asc' : 'desc' }))}
-                    className="inline-flex items-center gap-2"
+                    className={`inline-flex items-center gap-2 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      sortState.key === 'rvi' ? 'bg-blue-50 text-blue-800 font-semibold' : 'text-gray-600 hover:bg-gray-50'
+                    }`}
+                    aria-sort={sortState.key === 'rvi' ? (sortState.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
                   >
                     Volatility
                     {sortState.key === 'rvi' && (
                       sortState.dir === 'desc' ? (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 8l5 5 5-5H5z" />
                         </svg>
                       ) : (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 12l5-5 5 5H5z" />
                         </svg>
                       )
@@ -272,16 +288,19 @@ export default function ScorecardPage() {
                 <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   <button
                     onClick={() => setSortState(s => ({ key: 'size', dir: s.key === 'size' && s.dir === 'desc' ? 'asc' : 'desc' }))}
-                    className="inline-flex items-center gap-2"
+                    className={`inline-flex items-center gap-2 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      sortState.key === 'size' ? 'bg-blue-50 text-blue-800 font-semibold' : 'text-gray-600 hover:bg-gray-50'
+                    }`}
+                    aria-sort={sortState.key === 'size' ? (sortState.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
                   >
                     Size
                     {sortState.key === 'size' && (
                       sortState.dir === 'desc' ? (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 8l5 5 5-5H5z" />
                         </svg>
                       ) : (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 12l5-5 5 5H5z" />
                         </svg>
                       )
@@ -291,16 +310,19 @@ export default function ScorecardPage() {
                 <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   <button
                     onClick={() => setSortState(s => ({ key: 'responsiveness', dir: s.key === 'responsiveness' && s.dir === 'desc' ? 'asc' : 'desc' }))}
-                    className="inline-flex items-center gap-2"
+                    className={`inline-flex items-center gap-2 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      sortState.key === 'responsiveness' ? 'bg-blue-50 text-blue-800 font-semibold' : 'text-gray-600 hover:bg-gray-50'
+                    }`}
+                    aria-sort={sortState.key === 'responsiveness' ? (sortState.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
                   >
                     Response
                     {sortState.key === 'responsiveness' && (
                       sortState.dir === 'desc' ? (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 8l5 5 5-5H5z" />
                         </svg>
                       ) : (
-                        <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                        <svg className="h-3 w-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                           <path d="M5 12l5-5 5 5H5z" />
                         </svg>
                       )
